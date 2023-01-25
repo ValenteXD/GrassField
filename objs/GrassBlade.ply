@@ -1,0 +1,30 @@
+ply
+format ascii 1.0
+comment zipper output
+element vertex 15
+property float x
+property float y
+property float z
+element face 5
+property list uchar int vertex_indices
+end_header
+-0.03 0.0 0.0
+0.03 0.0 0.0
+0.015 0.1 0.01
+0.015 0.1 0.01
+-0.015 0.1 0.01
+-0.03 0.0 0.0
+-0.015 0.1 0.01
+0.015 0.1 0.01
+0.008 0.15 0.02
+0.008 0.15 0.02
+-0.008 0.15 0.02
+-0.015 0.1 0.01
+-0.008 0.15 0.02
+0.008 0.15 0.02
+0.0 0.2 0.04
+3 0 1 2
+3 3 4 5
+3 6 7 8
+3 9 10 11
+3 12 13 14
