@@ -5,6 +5,8 @@ Modifique os valores DENSITY e SIZE para controlar o ambiente
 
 self.renderDistance pode precisar ser alterada dependendo do tamanho
 
+self.FPSlimit pode ser usado para reduzir excesso de uso da GPU
+
 ### Dependências:
 
 PyOpenGL==3.1.6
