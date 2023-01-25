@@ -5,11 +5,12 @@ import ctypes
 class GrassBlade:
 
     def __init__(self,pipeline):
+        # controls scale of the model
         scale = 1
+        # Reads object .PLY file containg grass blade instructions
         state = 0
         vertexCount = 0
         faceCount = 0
-        #self.pipeline=pipeline
         vertices = array("f")
         indices = array("I")
         with open("objs/GrassBlade.ply", "r") as f:
@@ -60,5 +61,6 @@ class GrassBlade:
         GL.glUniform1f(GL.glGetUniformLocation(pipeline,"max_height"),0.2*scale)
 
     def draw(self,n):
+        #binding vertex array (needed due to altering pipelines when rendering)
         GL.glBindVertexArray(self.arrayBufferId)
         GL.glDrawElementsInstanced(GL.GL_TRIANGLES, self.N, GL.GL_UNSIGNED_INT, ctypes.c_void_p(0),n)

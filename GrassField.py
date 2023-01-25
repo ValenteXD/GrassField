@@ -15,6 +15,7 @@ class InstancedGrass(GLAPP):
         # Window setup
         self.title("Grass Field")
         self.size(1920,1080)
+        self.FPSlimit = 70
 
         # OpenGL Initialization
         GL.glClearColor(0.0212, 0.68, 0.83, 0.0)
@@ -67,7 +68,7 @@ class InstancedGrass(GLAPP):
         self.terrain = Terrain(N//10,SIZE,self.pipelineTerrain)
 
         #Define render distance
-        self.renderDistance=1000
+        self.renderDistance=100
 
 
     def draw(self):

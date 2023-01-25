@@ -41,13 +41,13 @@ class GLAPP(ABC):
         sdl2.SDL_GL_SetAttribute(sdl2.SDL_GL_CONTEXT_PROFILE_MASK,sdl2.SDL_GL_CONTEXT_PROFILE_CORE)
         sdl2.SDL_GL_SetAttribute(sdl2.SDL_GL_MULTISAMPLEBUFFERS, 1)
         sdl2.SDL_GL_SetAttribute(sdl2.SDL_GL_MULTISAMPLESAMPLES, 8)
+        sdl2.SDL_GL_SetSwapInterval(1)
         self.window = sdl2.SDL_CreateWindow("Gráficos".encode("utf-8"), sdl2.SDL_WINDOWPOS_CENTERED, sdl2.SDL_WINDOWPOS_CENTERED, self.width, self.height, sdl2.SDL_WINDOW_OPENGL | sdl2.SDL_WINDOW_RESIZABLE | sdl2.SDL_WINDOW_HIDDEN)
         if not self.window:
             raise Exception("Error: Could not create window")
         self.glContext = sdl2.SDL_GL_CreateContext(self.window)
         self.setup()
         sdl2.SDL_SetWindowPosition(self.window, sdl2.SDL_WINDOWPOS_CENTERED, sdl2.SDL_WINDOWPOS_CENTERED)
-        #sdl2.SDL_SetHint(sdl2.SDL_HINT_RENDER_SCALE_QUALITY, "1")
         sdl2.SDL_ShowWindow(self.window)
         running = True
         event = sdl2.SDL_Event()
@@ -80,15 +80,13 @@ class GLAPP(ABC):
             self.lastTime = time.time()
             if(self.frameTime==0):#impede divisão por 0
                 self.frameTime=0.0001
-            #if(self.frameTime>=1):#impede overflow de valores dependentes de frame time
-            #    self.frameTime=0.99
             self.passedTime+=self.frameTime*self.timeMultiplyer
             self.frameRate = 1/self.frameTime
             print(f"\033[0G\033[0KMouse: \033[1;36m{self.mouseX}, {self.mouseY}\033[0m\tFrameCount: \033[1;31m{self.frameCount}\033[0m\t FPS: \033[1;32m{int(self.frameRate)}\033[0m  ",end="",flush=True)
             self.draw()
             sdl2.SDL_GL_SwapWindow(self.window)
             self.frameCount += 1
-            #time.sleep(1/self.FPSlimit) #Limita a frame rate
+            time.sleep(1/self.FPSlimit) #Limita a frame rate
 
     def title(self, newTitle):
         sdl2.SDL_SetWindowTitle(self.window, newTitle.encode("utf-8"))
