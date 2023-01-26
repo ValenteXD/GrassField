@@ -19,6 +19,8 @@ PyGLM==2.6.0
 
 Pillow==9.3.0
 
+Numpy==1.24.1
+
 ### Requerimentos:
 
 Driver com suporte à OpenGL 4.0.0 ou superior
